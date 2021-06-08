@@ -1,0 +1,287 @@
+﻿@using G5ElectronicShop.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css" type="text/css" />
+    <!-- Font Static -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/Content/main.css" />
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- ------------------------------------------------------ -->
+</head>
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up"></i></button>
+    <header class="header">
+        <!-- ------------------ -->
+        <!-- TOP BANNER -->
+        <!-- ------------------ -->
+        <div class="top__bn">
+            <a href="#"><img src="~/Content/img/bn_top/bn-top2.jpg" alt="December ADS" /></a>
+        </div>
+        <!-- ------------------ -->
+        <!-- HEADER LOGO / SEARCH / SERVICE-->
+        <!-- ------------------ -->
+        <div class="header__nav">
+            <!-- ------------------ -->
+            <!-- HEADER LOGO-->
+            <!-- ------------------ -->
+            <div class="logo__img">
+                <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo.png" width="100%" alt="HIGHWIND COMPUTER" /></a>
+            </div>
+            <!-- ------------------ -->
+            <!-- HEADER SEARCH -->
+            <!-- ------------------ -->
+            <div class="search__bar">
+                <form class="search__function" action="" method="GET">
+                    <input type="text" placeholder="Search.." name="search" />
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <!-- ------------------ -->
+            <!-- HEADER SERVICE-->
+            <!-- ------------------ -->
+            <nav class="customer__nav">
+                <div class="nav-item">
+                    <a class="nav__items" href="@Url.Action("Contact","Home")">
+                        <img src="~/Content/img/nav_items/register.png" width="100%" alt="" />
+                        <div class="nav__items__description">
+                            <div class="items__text">Contact Us</div>
+                        </div>
+                    </a>
+                </div>
+                @if (Session["customer"] != null)
+                {
+                    <div class="nav-item dropdown-box">
+                        <a class="nav__items" href="#">
+                            <img src="~/Content/img/nav_items/login.png" width="100%" alt="" />
+                            <div class="nav__items__description">
+                                <div class="items__text">
+                                    <div class="text__welcome">Welcome @Session["customer"]</div>                                    
+                                </div>                                 
+                            </div>
+                        </a> 
+                        <div class="dropdown-content">
+                            <a class="nav__items" href="@Url.Action("PurchaseHistory", "Home")">Purchase History</a>
+                            <a class="nav__items" href="@Url.Action("LogOut", "Home")">Log Out</a>
+                        </div> 
+                    </div>                   
+                }
+                else
+                {
+                    <div class="nav-item">
+                        <a class="nav__items" href="@Url.Action("LogIn", "Home")">
+                            <img src="~/Content/img/nav_items/login.png" width="100%" alt="" />
+                            <div class="nav__items__description">
+                                <div class="items__text">Log In</div>
+                            </div>
+                        </a>
+                    </div>
+                }
+                <div class="nav-item ">
+                    <a class="nav__items" href="@Url.Action("Index","Cart")">
+                        <img src="~/Content/img/nav_items/shop.png" width="100%" alt="" />
+                        <div class="nav__items__description">
+                            <div class="items__text cart">Cart</div>
+                        </div>
+                    </a>                    
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <!-- HEADER NAVIGATION AND CAROUSEL START-->
+    <div class="header__navigation">
+        <div class="navbar__menu">
+            <nav class="left__menu__navbar">
+                <div class="left__nav_items">
+                    @foreach (TypeProduct item in ViewBag.menu)
+                    {
+                        <a href="@Url.Action("Index", "Home", new { typeid = item.typeID }, null)"><img src="~/Content/images/typeproduct/@item.images" width="50px" /> @item.typeName</a> 
+                    }
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- HEADER NAVIGATION END -->
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <!-- MAIN CONTENT START-->
+
+    <div class="main__content">
+        @RenderBody()
+    </div>
+    <!-- MAIN CONTENT END -->
+    <!-- ------------------ -->
+    <!-- ------------------ -->
+    <!-- FOOTER START-->
+    <footer class="footer">
+        <div class="footer__text">
+            <div class="footer__title">
+                <h6>Customer Support</h6>
+                <ul class="footer__list__info">
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Discount Card</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Warranty Center</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Payment and Delivery</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Repair and Maintenance Services</a></li>
+                </ul>
+            </div>
+            <div class="footer__title">
+                <h6>Purchase and Warranty Policy</h6>
+                <ul class="footer__list__info">
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">General Policy</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Information Security Policy</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Transport and Installation Policy</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Warranty Policy</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Return and Refund Policy</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Installment Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer__title">
+                <h6>About Us</h6>
+                <ul class="footer__list__info">
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Highwind Introduction</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Contact Information</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Showroom</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">FAQ</a></li>
+                    <li class="footer__info"><a href="@Url.Action("About", "Home")">Recruitment</a></li>
+                </ul>
+            </div>
+            <div class="footer__title">
+                <h6>Highwind Community</h6>
+                <ul class="footer__list__info">
+                    <li class="footer__info"><i class="fa fa-facebook-square"></i><a href="@Url.Action("About", "Home")">Highwind</a></li>
+                    <li class="footer__info"><i class="fa fa-youtube-play"></i><a href="@Url.Action("About", "Home")">Highwind Media</a></li>
+                    <li class="footer__info"><i class="fa fa-users"></i><a href="@Url.Action("About", "Home")">Highwind Group</a></li>
+                    <li class="footer__info"><i class="fa fa-phone"></i><a href="@Url.Action("Contact", "Home")">Call to buy: 1800 6868 (Free)</a></li>
+                    <li class="footer__info"><i class="fa fa-phone"></i><a href="@Url.Action("Contact", "Home")">Support call: 1800 6869 (Free)</a></li>
+                    <li class="footer__info"><i class="fa fa-comment"></i><a href="@Url.Action("Contact", "Home")">Chat with consultant</a></li>
+                </ul>
+            </div>
+            <div class="footer__title">
+                <h6>Contact Us</h6>
+                <ul class="footer__list__info">
+                    <li class="footer__info"><a>Customer support:</a></li>
+                    <li class="footer__info">
+                        <a href="mailto:customersupport@highwind.com"
+                           style="color: rgb(0, 162, 255)">customersupport@highwind.com</a>
+                    </li>
+                    <li class="footer__info"><a>Price Quote:</a></li>
+                    <li class="footer__info">
+                        <a href="mailto:pricequote@highwind.com"
+                           style="color: rgb(0, 162, 255)">pricequote@highwind.com</a>
+                    </li>
+                    <li class="footer__info"><a>Cooperation:</a></li>
+                    <li class="footer__info">
+                        <a href="mailto:cooperation@highwind.com"
+                           style="color: rgb(0, 162, 255)">cooperation@highwind.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <div class="copyright__content">
+                <div class="copyright__text">
+                    <h6>TRADE AND SERVICE JOINT STOCK COMPANY HIGHWIND</h6>
+                    <span>
+                        © 1997 - 2020 Highwind Trading and Service Joint Stock Company <br>
+                        Certificate of business registration: 0405998457 by the Department of Planning and Investment of Ho Chi Minh
+                        City for the first time on May 30, 2007
+                    </span>
+                </div>
+                <div class="copyright__address">
+                    <b>Head office address:</b> <br>
+                    <span>Floor 5, No. 117-119-121 Nguyen Du, Ben Thanh Ward, District 1, Ho Chi Minh City</span> <br>
+                    <b>Northern executive office:</b> <br>
+                    <span>Floor 6, No. 1 Thai Ha Street, Trung Liet Ward, Dong Da District, Hanoi</span> <br>
+                    <b>Southern executive office:</b> <br>
+                    <span>Floor 11 Minh Long Tower, No. 17 Ba Huyen Thanh Quan, Ward 6, District 3, City. Ho Chi Minh</span>
+                </div>
+                <div class="copyright__verified">
+                    <img src="img/da-dang-ky.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+    <!-- ------------------ -->
+    <!-- ------------------------------------------------------ -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <!-- ------------------------------------------------------ -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <!-- ------------------------------------------------------ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+            integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+            crossorigin="anonymous"></script>
+    <!-- ------------------------------------------------------ -->
+    <script src="~/Content/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"
+            type="text/javascript"></script>
+    <!-- ------------------------------------------------------ -->
+    <script src="~/Content/OwlCarousel2-2.3.4/dist/owl.carousel.js"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        //Get the button
+        var scrollTop_btn = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                scrollTop_btn.style.display = "block";
+            } else {
+                scrollTop_btn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // owl carousel
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                600: {
+                    items: 3,
+                },
+                1000: {
+                    items: 5,
+                },
+            },
+        });
+    </script>
+</body>
+</html>

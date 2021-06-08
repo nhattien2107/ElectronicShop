@@ -1,0 +1,58 @@
+﻿@model G5ElectronicShop.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfManufacture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfManufacture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @{var price = String.Format("{0:0,0 $}", @Html.DisplayFor(model => model.Price));} @price
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+
+        <dd>
+            <img src="~/Content/images/product/@Html.DisplayFor(model => model.Images)" width="80%" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") | 
+    <a href="~/Cart/AddItem?id=@Model.ProductID"><img src="~/Content/images/cart.jpg" width="20px" /><span style="color:#9de1f2;"> Add To Cart </span></a>
+</p>

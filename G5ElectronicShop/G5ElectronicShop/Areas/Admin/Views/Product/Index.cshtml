@@ -1,0 +1,107 @@
+﻿@model IEnumerable<G5ElectronicShop.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        <strong>Find by Name:</strong><input type="text" name="searchString" id="searchString" style="width: 50%;" />
+        <input type="submit" value="Search" />
+    </p>
+}
+<table>
+    <tr>
+        <th style="text-align: center;">
+            STT
+        </th>
+        <th style="text-align: center;">
+            @Html.ActionLink("Product ID", "Index", new { sortOrder = ViewBag.IDSortParm })
+        </th>
+        <th style="text-align: center; color: black;">
+            @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.PNameSortParm })
+        </th>
+        <th style="text-align: center;">
+            Type Name
+        </th>
+        <th style="text-align: center;">
+            Description
+        </th>
+        <th style="text-align: center;">
+            @Html.ActionLink("Date Of Manufacture", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th style="text-align: center;">
+            Manufacturer Name
+        </th>
+        <th style="text-align: center; color: black;">
+            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm })
+        </th>
+        <th style="text-align: center;">
+            Image
+        </th>
+        <th style="text-align: center;">Edit</th>
+        <th style="text-align: center;">Detail</th>
+        <th style="text-align: center;">Delete</th>
+    </tr>
+    @if (Model == null)
+    {
+        <tr>
+            <td>
+                No product is found!
+            </td>
+        </tr>
+    }
+    else
+    {
+        int stt = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    @{ stt += 1; } @stt
+                </td>
+                <td style="text-align: center;">
+                    @item.ProductID
+                </td>
+                <td style="text-align: left;">
+                    @item.ProductName
+                </td>
+                <td style="text-align: left;">
+                    @Html.DisplayFor(modelItem => item.TypeProduct.typeName)
+                </td>
+                <td style="text-align: left;">
+                    @Html.Raw(item.Description)
+                </td>
+                <td style="text-align: center;">
+                    @(item.DateOfManufacture.HasValue ? @item.DateOfManufacture.Value.ToString("dd-MM-yyyy") : null)
+                </td>
+                <td style="text-align: left;">
+                    @Html.DisplayFor(modelItem => item.Manufacturer.manufacturerName)
+                </td>
+                <td style="text-align: center;">
+                    @{var price = String.Format("{0:0,0 $}", @item.Price);} @price
+                </td>
+                <td>
+                    <img src="~/Content/images/product/@item.Images" width="100px" />
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID })
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<G5ElectronicShop.Models.Manufacturer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        <strong>Find by Name:</strong><input type="text" name="searchString" id="searchString" style="width: 30%;" />
+        <input type="submit" value="Search" />
+    </p>
+}
+<table style="width: 50%;">
+    <tr>
+        <th style="width: 70px;">
+            Manufacturer ID
+        </th>
+        <th>
+            Manufacturer Name
+        </th>
+        <th>
+            Nation Name
+        </th>
+
+        <th style="text-align: center;">Edit</th>
+        <th style="text-align: center;">Detail</th>
+        <th style="text-align: center;">Delete</th>
+    </tr>
+    @if (Model == null)
+    {
+        <tr>
+            <td>
+                No product is found!
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.manufacturerID)
+                </td>
+                <td style="text-align: left;">
+                    @Html.DisplayFor(modelItem => item.manufacturerName)
+                </td>
+                <td style="text-align: left;">
+                    @Html.DisplayFor(modelItem => item.Nation.nationName)
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.manufacturerID })
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Details", "Details", new { id = item.manufacturerID })
+                </td>
+                <td style="text-align: center;">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.manufacturerID })
+                </td>
+            </tr>
+        }
+    }
+</table>

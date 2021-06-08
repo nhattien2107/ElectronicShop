@@ -1,0 +1,73 @@
+﻿@model G5ElectronicShop.Models.Customer
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/login.css" />
+<div class="bg_login_page">
+    <img class="bg__img" src="img/Christmas-Website-BG.jpg" alt="" />
+    <div class="login__page">
+        <div class="welcome__text">
+            <h4>Welcome, Please Sign In!</h4>
+        </div>
+        <div class="signup_login_section">
+            <div class="sign_up_section">
+                <h5>New Customer</h5>
+                <br><h6><b>Register and save time!</b></h6>
+                <h6>Register with us for future convenience:</h6>
+                <h6><i class="fa fa-check"></i> Fast and easy check out</h6>
+                <h6><i class="fa fa-check"></i> Easy access to your order history</h6>
+                <h6><i class="fa fa-check"></i> Be up to date on your order status</h6>
+                <a href="@Url.Action("Register", "Register")"><input type="button" value="Register" class="signup_login_btn"></a>
+            </div>
+
+            <div class="sign_up_section">
+                <h5>Returning Customer</h5>
+                <br>
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td><h6>Username: </h6></td>
+                            <td><input type="text" class="form_input_f" name="username" id="username" required></td>
+                            <td><div class="text-warning"> <label id="error_us"></label></div></td>
+                        </tr>
+                        <tr>
+                            <td><h6>Password: </h6></td>
+                            <td><input type="password" class="form_input_f" name="password" id="password" required></td>
+                            <td><div class="text-warning"> <label id="error_us"></label></div></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type="submit" value="Login" class="signup_login_btn">
+                }                    
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function CheckData() {
+        var user = document.getElementById("username").value;
+        var pass = document.getElementById("password").value;
+
+        if (user == "") {
+            document.getElementById("error_us").innerHTML = "Input Username";
+            return false;
+        }
+        else {
+            document.getElementById("error_us").innerHTML = "";
+        }
+
+        if (pass == "") {
+            document.getElementById("error_pw").innerHTML = "Input Password";
+            return false;
+        }
+        else {
+            document.getElementById("error_pw").innerHTML = "";
+        }
+        return true;
+    }
+</script>

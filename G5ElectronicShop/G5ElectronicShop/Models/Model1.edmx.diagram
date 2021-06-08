@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0fd33e33f58420387c4284fcaeb2509" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineShopDBModel.Customer" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.Manufacturer" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.Nation" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.Order" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.OrderDetail" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.Product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.Staff" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineShopDBModel.TypeProduct" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_Manufacturer_Nation" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_Order_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineShopDBModel.FK_Product_Type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,311 @@
+﻿@model PagedList.IPagedList<G5ElectronicShop.Models.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .page-list {
+        margin: 0 auto;
+    }
+</style>
+<!-- ------------------ -->
+<!-- BANNER IMAGES -->
+<!-- ------------------ -->
+
+<div class="banner__images">
+    <a href='#'><img src='~/Content/img/nav_img1.jpg' alt='' /></a>
+    <a href='#'><img src='~/Content/img/nav_img2.jpg' alt='' /></a>
+    <a href='#'><img src='~/Content/img/nav_img3.jpg' alt='' /></a>
+    <a href='#'><img src='~/Content/img/nav_img4.jpg' alt='' /></a>
+
+</div>
+
+<!-- ------------------ -->
+<!-- POPULAR BRAND -->
+<!-- ------------------ -->
+
+<div class="popular__brand">
+    <div class="banner__text">
+        <h2>POPULAR BRAND</h2>
+    </div>
+
+    <div class="banner__images">
+        <div class="banner__images_content">
+            <div class="content__img">
+                <a href="productbrand.jsp?brand_id=9"><img src="~/Content/img/hp.jpg" alt="" /></a>
+            </div>
+            <div class="content__text_1">
+                <span>HP</span>
+            </div>
+            <div class="content__text_2">
+                <span>HP Laptop Festival - Extreme deals</span>
+            </div>
+        </div>
+        <div class="banner__images_content">
+            <div class="content__img">
+                <a href="productbrand.jsp?brand_id=6"><img src="~/Content/img/msi.jpg" alt="" /></a>
+            </div>
+            <div class="content__text_1">
+                <span>MSI</span>
+            </div>
+            <div class="content__text_2">
+                <span>Made for Gamers and Creators</span>
+            </div>
+        </div>
+        <div class="banner__images_content">
+            <div class="content__img">
+                <a href="productbrand.jsp?brand_id=1"><img src="~/Content/img/lg.jpg" alt="" /></a>
+            </div>
+            <div class="content__text_1">
+                <span>LG</span>
+            </div>
+            <div class="content__text_2">
+                <span>Winning LG Laptop Giveaway</span>
+            </div>
+        </div>
+        <div class="banner__images_content">
+            <div class="content__img">
+                <a href="productbrand.jsp?brand_id=11"><img src="~/Content/img/lenovo.jpg" alt="" /></a>
+            </div>
+            <div class="content__text_1">
+                <span>LENOVO</span>
+            </div>
+            <div class="content__text_2">
+                <span>Laptop For True Gamers</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------------ -->
+<!-- CAROUSEL 2 -->
+<!-- ------------------ -->
+<div id="carouselExampleIndicators"
+     class="carousel slide"
+     data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/img/ca1.jpeg" alt="First slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca2.jpeg" alt="Second slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca3.jpeg" alt="Third slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca4.jpeg" alt="Forth slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca5.jpeg" alt="Fifth slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca6.jpeg" alt="Sixth slide" />
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Content/img/ca7.jpeg" alt="Seventh slide" />
+        </div>
+    </div>
+    <a class="carousel-control-prev"
+       href="#carouselExampleIndicators"
+       role="button"
+       data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next"
+       href="#carouselExampleIndicators"
+       role="button"
+       data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- ------------------ -->
+<!-- CATAGORIES -->
+<!-- ------------------ -->
+<div class="catagories">
+    <div class="product__list">
+        <div class="product__title">
+            <div class="title__text">
+                <h3>LAPTOP</h3>
+            </div>
+            <div class="title__seeall">
+                <a href="#">
+                    <h6>See all ></h6>
+                </a>
+            </div>
+        </div>
+        <div class="product__content">
+            <div class="product__content_img">
+                <img src="~/Content/img/LT.jpg" alt="" />
+            </div>
+            <div class="product__content_pd">
+                <div class="product__content_pd_detail">
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>MSI Gaming</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>POWER FROM DRAGON</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="productbrand.jsp?brand_id=6"><img src="~/Content/img/smsi.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>LENOVO</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>For businessman</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="productbrand.jsp?brand_id=11"><img src="~/Content/img/sle.png" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__content_pd_detail">
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>HP Festival</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Extreme discounts</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="productbrand.jsp?brand_id=9"><img src="~/Content/img/sHp.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>LG Gram</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Thin and convenient</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="productbrand.jsp?brand_id=1"><img src="~/Content/img/slg.png" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product__list">
+        <div class="product__title">
+            <div class="title__text">
+                <h3>GAMING GEAR</h3>
+            </div>
+            <div class="title__seeall">
+                <a href="#">
+                    <h6>See all ></h6>
+                </a>
+            </div>
+        </div>
+        <div class="product__content">
+            <div class="product__content_img">
+                <img src="~/Content/img/LT.jpg" alt="" />
+            </div>
+            <div class="product__content_pd">
+                <div class="product__content_pd_detail">
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>Highwind PC</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Great deal PC</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="producttype.jsp?producttype_id=1"><img src="~/Content/img/Case.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>Highwind Mouse</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Best mouse for Gamer</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="producttype.jsp?producttype_id=4"><img src="~/Content/img/mouse.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__content_pd_detail">
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>Gaming Monitor</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Extreme discounts</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="producttype.jsp?producttype_id=7"><img src="~/Content/img/monitor.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="pd_details">
+                        <div class="content__text_1">
+                            <span>VGA</span>
+                        </div>
+                        <div class="content__text_2">
+                            <span>Outstanding Performance</span>
+                        </div>
+                        <div class="content_img">
+                            <a href="producttype.jsp?producttype_id=9"><img src="~/Content/img/vga.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------------ -->
+<!-- ALL PRODUCTS -->
+<!-- ------------------ -->
+<div class="list__all_products">
+    <div class="all__products">
+        <div class="product__info">
+            <div class="title__text">
+                <h3 style="padding-left: 20px;">ALL PRODUCTS</h3>
+            </div>
+            <div class="main">
+                @{  string typeid = "";}
+                @foreach (var item in Model)
+                {
+                typeid = ViewBag.typeid;
+                    <div class="card_info" style="width: 248px; height: 100%;">
+                        <a href="~/Home/Details?id=@item.ProductID">
+                            <img src="~/Content/images/product/@item.Images" class="card-img-top" style="height: 248px;" alt="@item.Images" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: Segoe UI; font-weight: 400; font-size: 15px; height:120px;"><a href="#" style="color: black;">@item.ProductName</a></h5>
+                            <p class="card-text">@{var price = String.Format("{0:0,0 $}", @item.Price);} <span style="color:#405bce;">@price</span><span style="color:#9de1f2;">   |  </span><a href="~/Cart/AddItem?id=@item.ProductID"><img src="~/Content/images/cart.jpg" width="20px" /><span style="color:#9de1f2;"> Add To Cart </span></a></p> 
+                        </div>
+                    </div>
+                }
+                <div class="page-list">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, typeid = typeid }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

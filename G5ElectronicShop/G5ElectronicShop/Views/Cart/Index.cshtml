@@ -1,0 +1,95 @@
+﻿@model IEnumerable<G5ElectronicShop.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List items in your Cart</h2>
+
+<table class="table">
+    <tr>
+        <th style="text-align:center">
+            STT
+        </th>
+        <th style="text-align:center">
+            Product Name
+        </th>
+        <th style="text-align:center">
+            Product Image
+        </th>
+        <th style="text-align:center">
+            Price
+        </th>
+        <th style="text-align:center">
+            Quantity
+        </th>
+        <th style="text-align:center">
+            Money
+        </th>
+        <th></th>
+    </tr>
+    @{ double total = 0;
+        int stt = 0; }
+    @if (Model == null || Model.Count() <= 0)
+    {
+        <tr>
+            <td>
+                Your Cart is empty!
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center">
+                    @{ stt += 1;} @stt
+                </td>
+                <td width="300px" style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.product.ProductName)
+                </td>
+                <td style="text-align:center">
+                    <img src="~/Content/images/product/@item.product.Images" width="150px" />
+                </td>
+                <td style="text-align:center">
+                    <p style="color: red;">$@item.product.Price</p>
+                </td>
+                <td style="text-align:center">
+                    <b style="font-size:24px;">
+                        @Html.ActionLink("-", "UpdateItem", "Cart", new { id = item.product.ProductID, quantity = item.quantity - 1 }, null)
+                    </b>
+                    <input type="text" name="quantity" style="text-align:center" value="@item.quantity" maxlength="2" size="2" readonly />
+                    <b style="font-size:24px;">
+                        @Html.ActionLink("+", "UpdateItem", "Cart", new { id = item.product.ProductID, quantity = item.quantity + 1 }, null)
+                    </b>
+                </td>
+                <td style="text-align:center">
+                    @{ var money = @item.product.Price * item.quantity;}
+                    <p style="color: red;">$@money</p>
+                    @{total = total + (double)(@item.product.Price * item.quantity);}
+                </td>
+                <td style="text-align:center">                    
+                    @Html.ActionLink("Delete", "DeleteItem", new { id = item.product.ProductID })
+                </td>
+            </tr>
+        }
+    <tr>
+    <td colspan="4"></td>
+    <td style="text-align:right"><strong>Total Money: </strong></td>
+    <td style="text-align:center">
+        <span style="color: red;"><strong>$@total</strong></span>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+        <td colspan="5"><strong>@Html.ActionLink("Back to Home", "Index", "Home")</strong></td>
+        <td style="text-align: center;"><strong>@Html.ActionLink("Order", "Order")</strong></td>
+        <td></td>
+    </tr>
+    }
+</table>
+
+
+

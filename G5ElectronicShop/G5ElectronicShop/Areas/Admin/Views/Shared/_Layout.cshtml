@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Admin</title>
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Bootstrap core CSS -->
+    <link href="~/css/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/css/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/css/style2.css" rel="stylesheet">
+    <link href="~/css/style-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+    <section id="container">
+        <!-- HEADER -->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="~/Admin/HomeAdmin/Index" class="logo"><b>HIGHWIND<span>ADMIN</span></b></a>
+            <!--logo end-->
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout">Welcome @Session["Admin"]</a></li>
+                </ul>
+            </div>
+        </header>
+
+
+        <!--MAIN SIDEBAR MENU-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <h5 class="centered">ADMIN COMMAND LIST</h5>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Staff")">
+                            <i class="fa fa-desktop"></i>
+                            <span>Staff List</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Customer")">
+                            <i class="fa fa-comments-o"></i>
+                            <span>Customer List</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Product")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Product List</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "TypeProduct")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Product Type</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "OrderProduct")">
+                            <i class="fa fa-book"></i>
+                            <span>Bill List</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("DetailOrder", "OrderProduct")">
+                            <i class="fa fa-book"></i>
+                            <span>Bill Detail</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Manufacturer")">
+                            <i class="fa fa-tasks"></i>
+                            <span>Manufacturer Manage</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("Index", "Nation")">
+                            <i class="fa fa-map-marker"></i>
+                            <span>Nation Manage</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="@Url.Action("LogOut", "Login")">
+                            <i class="fa fa-key"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+
+        <!--MAIN CONTENT-->
+        <section id="main-content">
+            <div class="container-body">
+                @RenderBody()
+            </div>           
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="footer">
+                <span><i><b>*Address:</b></i> 1416, Le Duc Tho St, Ward 13, Go Vap District, Ho Chi Minh City.</span> <br>
+                <span><i><b>*Mobile Phone:</b></i> 0335 167 610</span><br>
+                <span><i><b>*Facebook:</b></i><a class="facebook" href="facebook.com/libertyfurniture"> Liberty Furniture</a></span><br>
+                <span><i><b>*Email:</b></i><a class="email" href="mailto:libertyfurniture@gmail.com"> libertyfurniture@gmail.com</a></span>
+            </div>
+        </footer>
+    </section>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

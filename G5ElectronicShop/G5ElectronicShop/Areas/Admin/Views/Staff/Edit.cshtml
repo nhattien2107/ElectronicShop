@@ -1,0 +1,205 @@
+﻿@model G5ElectronicShop.Models.Staff
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Staff", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return ValidateUser();" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Staff</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.StaffID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StaffName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StaffName, "Please Enter Staff Name", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaxCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TaxCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TaxCode, "Please Enter TaxCode", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "Please Enter Phone", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "Please Enter Address", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "Please Enter Email", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "Please Enter UserName", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "Please Enter PassWord", new { @class = "text-danger", style = "display:none" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="~/Content/images/id photo/@Model.Images" width="100px" />
+                @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger", style = "display:none" })
+                <input type="file" name="newImages" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function ValidateUser() {
+        if ($('#StaffName').val().trim() == '') {
+            $('#StaffName').next('span').show();
+            return false;
+        } else {
+            $('#StaffName').next('span').hide();
+        }
+        if ($('#TaxCode').val().trim() == '') {
+            $('#TaxCode').next('span').show();
+            return false;
+        } else {
+            $('#TaxCode').next('span').hide();
+        }
+        if ($('#Phone').val().trim() == '') {
+            $('#Phone').next('span').show();
+            return false;
+        } else {
+            $('#Phone').next('span').hide();
+        }
+        if (!ValidatePhone($('#Phone').val().trim())) {
+            $('#Phone').next('span').text('Please enter valid Phone').show();
+            return false;
+        } else {
+            $('#Phone').next('span').text('Please enter Phone').hide();
+        }
+        if ($('#Address').val().trim() == '') {
+            $('#Address').next('span').show();
+            return false;
+        } else {
+            $('#Address').next('span').hide();
+        }
+        if ($('#Email').val().trim() == '') {
+            $('#Email').next('span').show();
+            return false;
+        } else {
+            $('#Email').next('span').hide();
+        }
+        if (!ValidateEmail($('#Email').val().trim())) {
+            $('#Email').next('span').text('Please enter valid Email').show();
+            return false;
+        } else {
+            $('#Email').next('span').text('Please enter Email').hide();
+        }
+        if ($('#Username').val().trim() == '') {
+            $('#Username').next('span').show();
+            return false;
+        } else {
+            $('#Username').next('span').hide();
+        }
+        if ($('#Password').val().trim() == '') {
+            $('#Password').next('span').show();
+            return false;
+        } else {
+            $('#Password').next('span').hide();
+        }
+        if (PasswordStrengthCheck($('#Password').val().trim()) == false) {
+            return false;
+        }
+        return true;
+    }
+    function PasswordStrengthCheck(password) {
+        if (password != '') {
+            if (password.length < 8) {
+                $('#Password').next('span').text('Be at least 8 characters').show();
+                $('#Password').focus();
+                return false;
+            } else if (!password.match(/[A-z]/)) {
+                $('#Password').next('span').text('At least one letter').show();
+                $('#Password').focus();
+                return false;
+            } else if (!password.match(/[A-Z]/)) {
+                $('#Password').next('span').text('At least one uppercase alphabet').show();
+                $('#Password').focus();
+                return false;
+            } else if (!password.match(/[a-z]/)) {
+                $('#Password').next('span').text('At least one lowercase alphabet').show();
+                $('#Password').focus();
+                return false;
+            } else if (!password.match(/\d/)) {
+                $('#Password').next('span').text('At least one number').show();
+                $('#Password').focus();
+                return false;
+            } else if (!password.match(/[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+                $('#Password').next('span').text('At least one special character').show();
+                $('#Password').focus();
+                return false;
+            } else {
+                $('#Password').next('span').text('').hide();
+            }
+        } else {
+            $('#Password').next('span').text('Please enter Password').show();
+            return false;
+        }
+    }
+    function ValidateEmail(email) {
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return email.match(mailformat);
+    }
+    function ValidatePhone(phone) {
+        var phoneformat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        return phone.match(phoneformat);
+    }
+</script>
